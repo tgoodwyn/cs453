@@ -235,14 +235,13 @@
     }
 
     function generic(given) {
-      var peppy = given
 
       request = new XMLHttpRequest();
-      request.open("GET","index.php?occupied="+peppy.data);
+      request.open("GET","index.php?occupied="+given.data);
 
       request.onreadystatechange = function () {
         if (request.readyState == 4)
-            my_callback(peppy);
+            my_callback(given);
 
       }
       request.send();

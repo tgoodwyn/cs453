@@ -54,8 +54,8 @@
 <script type = "text/javascript">
 
     class1 = {
-        instructorHasEntered : false,
-        studentInRect1 : false,
+        instructorHasEntered : "coolwhip",
+        studentInRect1 : {data: "bananas"},
         studentInRect2 : false,
         studentInRect3 : false,
         studentInRect4 : false,
@@ -95,13 +95,14 @@
 
 
     function studentEnterRect1() {
+        var peppy = currentClass.studentInRect1
 
       request = new XMLHttpRequest();
-      request.open("GET","index.php");
+      request.open("GET","index.php?occupied="+peppy.data);
     
       request.onreadystatechange = function () {
          if (request.readyState == 4)
-             my_callback();
+             my_callback(peppy);
     
        }
       request.send();
@@ -243,10 +244,16 @@
  document.getElementById ("Exit4").addEventListener ("click", studentExitRect4)
  document.getElementById ("Exit5").addEventListener ("click", studentExitRect5)
     
-    function my_callback() {
+    function my_callback(toSet) {
         if (request.status == 200) {
     console.log("Request successful ");
-         
+    console.log(toSet.data);
+    console.log(currentClass.instructorHasEntered);
+
+
+        toSet.data = "pickles";
+    console.log(currentClass.studentInRect1.data);
+
         document.getElementById("thispart").innerHTML = request.responseText;
 
         }

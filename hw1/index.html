@@ -67,6 +67,7 @@
 <script type = "text/javascript">
 
     class1 = {
+        number : 1,
         instructorHasEntered : {data: false},
         studentInRect1 : {data: false},
         studentInRect2 : {data: false},
@@ -76,6 +77,7 @@
         studentInRectQ : {data: false}
     }
     class2 = {
+        number : 2,
         instructorHasEntered : {data: false},
         studentInRect1 : {data: false},
         studentInRect2 : {data: false},
@@ -85,6 +87,7 @@
         studentInRectQ : {data: false}
     }
     class3 = {
+        number : 3,
         instructorHasEntered : {data: false},
         studentInRect1 : {data: false},
         studentInRect2 : {data: false},
@@ -108,35 +111,35 @@
 
     // NOTE ON PARAMETER NAMES:
     // b_ for boolean value
-    function sensorCheck(currentStudent, b_StudentOrTeacher) {//, b_DeskOrNot, b_EntryOrExit) {
+    function sensorCheck(classNum, currentStudent, b_StudentOrTeacher, b_DeskOrNot, b_EntryOrExit) {
         request = new XMLHttpRequest();
         request.onreadystatechange = function () {
           if (request.readyState == 4)
               my_callback(currentStudent);
         }
-        request.open("GET","index.php?occupied="+currentStudent.data+"&personType="+b_StudentOrTeacher);
+        request.open("GET","index.php?occupied="+currentStudent.data+"&StudentOrTeacher="+b_StudentOrTeacher+"&DeskOrNot="+b_DeskOrNot+"&EntryOrExit="+b_EntryOrExit);
         request.send();
     }
 
 // order of parameters:
 // ,b_StudentOrTeacher, b_DeskOrNot, b_EntryOrExit
 
-    document.getElementById ("Enter1").addEventListener ("click", () => sensorCheck(currentClass.studentInRect1, 0, 0, 0))
-    document.getElementById ("Enter2").addEventListener ("click", () => sensorCheck(currentClass.studentInRect2, 0, 0, 0))
-    document.getElementById ("Enter3").addEventListener ("click", () => sensorCheck(currentClass.studentInRect3, 0, 0, 0))
+    document.getElementById ("Enter1").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect1, 0, 0, 0))
+    document.getElementById ("Enter2").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect2, 0, 0, 0))
+    document.getElementById ("Enter3").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 0, 0))
     document.getElementById ("Enter4").addEventListener ("click", () => sensorCheck(currentClass.studentInRect4, 0, 0, 0))
-    document.getElementById ("Enter5").addEventListener ("click", () => sensorCheck(currentClass.studentInRect5, 0, 0, 0))
-    document.getElementById ("Exit1").addEventListener ("click", () => sensorCheck(currentClass.studentInRect1, 0, 0, 1))
+    document.getElementById ("Enter5").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 0))
+    document.getElementById ("Exit1").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect1, 0, 0, 1))
     document.getElementById ("Exit2").addEventListener ("click", () => sensorCheck(currentClass.studentInRect2, 0, 0, 1))
-    document.getElementById ("Exit3").addEventListener ("click", () => sensorCheck(currentClass.studentInRect3, 0, 0, 1))
-    document.getElementById ("Exit4").addEventListener ("click", () => sensorCheck(currentClass.studentInRect4, 0, 0, 1))
-    document.getElementById ("Exit5").addEventListener ("click", () => sensorCheck(currentClass.studentInRect5, 0, 0, 1))
+    document.getElementById ("Exit3").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 0, 1))
+    document.getElementById ("Exit4").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect4, 0, 0, 1))
+    document.getElementById ("Exit5").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 1))
 
 // Instructor and question rectangles 
-    document.getElementById ("EnterQ").addEventListener ("click", () => sensorCheck(currentClass.studentInRect2, 0, 1, 0))
-    document.getElementById ("ExitQ").addEventListener ("click", () => sensorCheck(currentClass.studentInRect3, 0, 1, 1))
-    document.getElementById ("EnterI").addEventListener ("click", () => sensorCheck(currentClass.studentInRect4, 1, 0, 0))
-    document.getElementById ("ExitI").addEventListener ("click", () => sensorCheck(currentClass.studentInRect5, 1, 0, 1))    
+    document.getElementById ("EnterQ").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect2, 0, 1, 0))
+    document.getElementById ("ExitQ").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 1, 1))
+    document.getElementById ("EnterI").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect4, 1, 0, 0))
+    document.getElementById ("ExitI").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect5, 1, 0, 1))    
     
 // EnterQ
 // ExitQ

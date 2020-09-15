@@ -46,14 +46,28 @@
         <button type = "button"  id="Exit5">
         Student Exit Rect 5
         </button>
+        <button type = "button"  id="EnterQ">
+        Student Enter Question Rect
+        </button>
+        <button type = "button"  id="ExitQ">
+        Student Exit Question Rect
+        </button>
+        <button type = "button"  id="EnterI">
+        Instructor Enter 
+        </button>
+        <button type = "button"  id="ExitI">
+          Instructor Exit
+        </button>  
 
 </form>
+<ul id="myList"></ul>
 
 <!-- To do : Add buttons for instructor actions , question asking , class beginning and ending  -->
 
 <script type = "text/javascript">
 
     class1 = {
+<<<<<<< HEAD
         instructorHasEntered : "coolwhip",
         studentInRect1 : {data: false},
         studentInRect2 : false,
@@ -61,24 +75,36 @@
         studentInRect4 : false,
         studentInRect5 : false,
         studentInRectQ : false
+=======
+        number : 1,
+        instructorHasEntered : {data: 0},
+        studentInRect1 : {data: 0},
+        studentInRect2 : {data: 0},
+        studentInRect3 : {data: 0},
+        studentInRect4 : {data: 0},
+        studentInRect5 : {data: 0},
+        studentInRectQ : {data: 0}
+>>>>>>> tb2
     }
     class2 = {
-        instructorHasEntered : false,
-        studentInRect1 : false,
-        studentInRect2 : false,
-        studentInRect3 : false,
-        studentInRect4 : false,
-        studentInRect5 : false,
-        studentInRectQ : false
+        number : 2,
+        instructorHasEntered : {data: 0},
+        studentInRect1 : {data: 0},
+        studentInRect2 : {data: 0},
+        studentInRect3 : {data: 0},
+        studentInRect4 : {data: 0},
+        studentInRect5 : {data: 0},
+        studentInRectQ : {data: 0}
     }
     class3 = {
-        instructorHasEntered : false,
-        studentInRect1 : false,
-        studentInRect2 : false,
-        studentInRect3 : false,
-        studentInRect4 : false,
-        studentInRect5 : false,
-        studentInRectQ : false
+        number : 3,
+        instructorHasEntered : {data: 0},
+        studentInRect1 : {data: 0},
+        studentInRect2 : {data: 0},
+        studentInRect3 : {data: 0},
+        studentInRect4 : {data: 0},
+        studentInRect5 : {data: 0},
+        studentInRectQ : {data: 0}
     }
     
     // To do : Link drop down menu configuration options to set this variable
@@ -90,13 +116,47 @@
     currentStudentSanitizesUponExit = true;
     currentStudentIsWearingMask = true;
     
-// To do : for each function , include in PHP request the related boolean currentClass variables ( e.g. currentClass. studentInRect1 for studentEnterRect1() )
-// To do : for each function , include in PHP request the related boolean currentStudent variables ( e.g. currentStudentWipesUponEntry for studentEnterRect1(), currentStudentSanitizesUponExit for studentExitRect1(), etc. )
+    // To do : for each function , include in PHP request the related boolean currentClass variables ( e.g. currentClass. studentInRect1 for studentEnterRect1() )
+    // To do : for each function , include in PHP request the related boolean currentStudent variables ( e.g. currentStudentWipesUponEntry for studentEnterRect1(), currentStudentSanitizesUponExit for studentExitRect1(), etc. )
 
+    // NOTE ON PARAMETER NAMES:
+    // b_ for boolean value
+    function sensorCheck(classNum, currentStudent, b_StudentOrTeacher, b_DeskOrNot, b_EntryOrExit) {
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+          if (request.readyState == 4)
+              my_callback(currentStudent);
+        }
+        request.open("GET","index.php?occupied="+currentStudent.data+"&StudentOrTeacher="+b_StudentOrTeacher+"&DeskOrNot="+b_DeskOrNot+"&EntryOrExit="+b_EntryOrExit);
+        request.send();
+    }
 
-    function studentEnterRect1() {
-        var peppy = currentClass.studentInRect1
+// order of parameters:
+// ,b_StudentOrTeacher, b_DeskOrNot, b_EntryOrExit
 
+    document.getElementById ("Enter1").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect1, 0, 0, 0))
+    document.getElementById ("Enter2").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect2, 0, 0, 0))
+    document.getElementById ("Enter3").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 0, 0))
+    document.getElementById ("Enter4").addEventListener ("click", () => sensorCheck(currentClass.studentInRect4, 0, 0, 0))
+    document.getElementById ("Enter5").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 0))
+    document.getElementById ("Exit1").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect1, 0, 0, 1))
+    document.getElementById ("Exit2").addEventListener ("click", () => sensorCheck(currentClass.studentInRect2, 0, 0, 1))
+    document.getElementById ("Exit3").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 0, 1))
+    document.getElementById ("Exit4").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect4, 0, 0, 1))
+    document.getElementById ("Exit5").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 1))
+
+// Instructor and question rectangles 
+    document.getElementById ("EnterQ").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect2, 0, 1, 0))
+    document.getElementById ("ExitQ").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 1, 1))
+    document.getElementById ("EnterI").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect4, 1, 0, 0))
+    document.getElementById ("ExitI").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect5, 1, 0, 1))    
+    
+// EnterQ
+// ExitQ
+// EnterI
+// ExitI
+
+<<<<<<< HEAD
       request = new XMLHttpRequest();
       request.open("GET","index.php?occupied="+peppy.data);
     
@@ -279,12 +339,21 @@
 
         toSet.data = true;
     console.log(currentClass.studentInRect1.data);
+=======
+    function my_callback(toSet) {
+        if (request.status == 200) {
+          console.log("Request successful ");
+>>>>>>> tb2
 
-        document.getElementById("thispart").innerHTML = request.responseText;
+          var node = document.createElement("LI");               
+          var textnode = document.createTextNode(request.responseText);      
+          node.appendChild(textnode);                            
+          document.getElementById("myList").appendChild(node);    
+          toSet.data = 1;
 
         }
         else if (request.status=404) {
-        alert("Server was not found: data returned is :\n"+request.responseText);
+          alert("Server was not found: data returned is :\n"+request.responseText);
     
         }
     
@@ -295,4 +364,3 @@
 
 </body>
 </html>
-<!--  cha cha cha -->

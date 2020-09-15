@@ -109,7 +109,7 @@
     instructorWipesUponExit          = 1;
     instructorSanitizesUponExit      = 1;
     instructorIsWearingMask          = 1;
-    
+
     // To do : for each function , include in PHP request the related boolean currentClass variables ( e.g. currentClass. studentInRect1 for studentEnterRect1() )
     // To do : for each function , include in PHP request the related boolean currentStudent variables ( e.g. currentStudentWipesUponEntry for studentEnterRect1(), currentStudentSanitizesUponExit for studentExitRect1(), etc. )
 
@@ -121,6 +121,10 @@
           if (request.readyState == 4)
               my_callback(currentStudent);
         }
+        // The logic pertaining to information that the sensor does not know about is done on the client side 
+        b_EntryOrExit
+        b_StudentOrTeacher
+        b_DeskOrNot
         request.open("GET","index.php?occupied="+currentStudent.data+"&StudentOrTeacher="+b_StudentOrTeacher+"&DeskOrNot="+b_DeskOrNot+"&EntryOrExit="+b_EntryOrExit);
         request.send();
     }

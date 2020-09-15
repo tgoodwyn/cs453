@@ -55,7 +55,7 @@
 
     class1 = {
         instructorHasEntered : "coolwhip",
-        studentInRect1 : {data: "bananas"},
+        studentInRect1 : {data: false},
         studentInRect2 : false,
         studentInRect3 : false,
         studentInRect4 : false,
@@ -233,7 +233,23 @@
       request.send();
     
     }
- document.getElementById ("Enter1").addEventListener ("click", studentEnterRect1)
+
+    function generic(given) {
+      var peppy = given
+
+      request = new XMLHttpRequest();
+      request.open("GET","index.php?occupied="+peppy.data);
+
+      request.onreadystatechange = function () {
+        if (request.readyState == 4)
+            my_callback(peppy);
+
+      }
+      request.send();
+    
+    }
+
+ document.getElementById ("Enter1").addEventListener ("click", () => generic(currentClass.studentInRect1))
  document.getElementById ("Enter2").addEventListener ("click", studentEnterRect2)
  document.getElementById ("Enter3").addEventListener ("click", studentEnterRect3)
  document.getElementById ("Enter4").addEventListener ("click", studentEnterRect4)
@@ -251,7 +267,7 @@
     console.log(currentClass.instructorHasEntered);
 
 
-        toSet.data = "pickles";
+        toSet.data = true;
     console.log(currentClass.studentInRect1.data);
 
         document.getElementById("thispart").innerHTML = request.responseText;

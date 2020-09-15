@@ -95,14 +95,12 @@
 
 
     function studentEnterRect1() {
-        var peppy = currentClass.studentInRect1
-
       request = new XMLHttpRequest();
-      request.open("GET","index.php?occupied="+peppy.data);
+      request.open("GET","index.php");
     
       request.onreadystatechange = function () {
          if (request.readyState == 4)
-             my_callback(peppy);
+             my_callback();
     
        }
       request.send();

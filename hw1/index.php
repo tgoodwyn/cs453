@@ -1,10 +1,15 @@
 <?php 
-  $occupied = $_REQUEST["occupied"];
+  $occupied = filter_var($_REQUEST["occupied"], FILTER_VALIDATE_BOOLEAN);
+  $personType = ($_REQUEST["personType"]);
+
   // print "<p>Hi, $mydata! This is new important data for your web page.</p> ";
-  if ($occupied)
+  if (!$occupied && $personType)
   {
-    echo "<p>$occupied desk now full.</p> ";
+    echo "desk now full";
+    echo $personType;
   } else {
-    echo "<p>desk already full.</p> ";
+    echo "desk already full";
+    echo $personType;
+
   }
   ?>

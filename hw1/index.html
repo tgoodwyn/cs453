@@ -46,39 +46,52 @@
         <button type = "button"  id="Exit5">
         Student Exit Rect 5
         </button>
+        <button type = "button"  id="EnterQ">
+        Student Enter Question Rect
+        </button>
+        <button type = "button"  id="ExitQ">
+        Student Exit Question Rect
+        </button>
+        <button type = "button"  id="EnterI">
+        Instructor Enter 
+        </button>
+        <button type = "button"  id="ExitI">
+          Instructor Exit
+        </button>  
 
 </form>
+<ul id="myList"></ul>
 
 <!-- To do : Add buttons for instructor actions , question asking , class beginning and ending  -->
 
 <script type = "text/javascript">
 
     class1 = {
-        instructorHasEntered : "coolwhip",
-        studentInRect1 : {data: "bananas"},
-        studentInRect2 : false,
-        studentInRect3 : false,
-        studentInRect4 : false,
-        studentInRect5 : false,
-        studentInRectQ : false
+        instructorHasEntered : {data: false},
+        studentInRect1 : {data: false},
+        studentInRect2 : {data: false},
+        studentInRect3 : {data: false},
+        studentInRect4 : {data: false},
+        studentInRect5 : {data: false},
+        studentInRectQ : {data: false}
     }
     class2 = {
-        instructorHasEntered : false,
-        studentInRect1 : false,
-        studentInRect2 : false,
-        studentInRect3 : false,
-        studentInRect4 : false,
-        studentInRect5 : false,
-        studentInRectQ : false
+        instructorHasEntered : {data: false},
+        studentInRect1 : {data: false},
+        studentInRect2 : {data: false},
+        studentInRect3 : {data: false},
+        studentInRect4 : {data: false},
+        studentInRect5 : {data: false},
+        studentInRectQ : {data: false}
     }
     class3 = {
-        instructorHasEntered : false,
-        studentInRect1 : false,
-        studentInRect2 : false,
-        studentInRect3 : false,
-        studentInRect4 : false,
-        studentInRect5 : false,
-        studentInRectQ : false
+        instructorHasEntered : {data: false},
+        studentInRect1 : {data: false},
+        studentInRect2 : {data: false},
+        studentInRect3 : {data: false},
+        studentInRect4 : {data: false},
+        studentInRect5 : {data: false},
+        studentInRectQ : {data: false}
     }
     
     // To do : Link drop down menu configuration options to set this variable
@@ -90,31 +103,59 @@
     currentStudentSanitizesUponExit = true;
     currentStudentIsWearingMask = true;
     
-// To do : for each function , include in PHP request the related boolean currentClass variables ( e.g. currentClass. studentInRect1 for studentEnterRect1() )
-// To do : for each function , include in PHP request the related boolean currentStudent variables ( e.g. currentStudentWipesUponEntry for studentEnterRect1(), currentStudentSanitizesUponExit for studentExitRect1(), etc. )
+    // To do : for each function , include in PHP request the related boolean currentClass variables ( e.g. currentClass. studentInRect1 for studentEnterRect1() )
+    // To do : for each function , include in PHP request the related boolean currentStudent variables ( e.g. currentStudentWipesUponEntry for studentEnterRect1(), currentStudentSanitizesUponExit for studentExitRect1(), etc. )
 
+    // NOTE ON PARAMETER NAMES:
+    // b_ for boolean value
+    function sensorCheck(currentStudent, b_StudentOrTeacher) {//, b_DeskOrNot, b_EntryOrExit) {
+        request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+          if (request.readyState == 4)
+              my_callback(currentStudent);
+        }
+        request.open("GET","index.php?occupied="+currentStudent.data+"&personType="+b_StudentOrTeacher);
+        request.send();
+    }
 
- document.getElementById ("Enter1").addEventListener ("click", () => sensorCheck(studentInRect1))
- document.getElementById ("Enter2").addEventListener ("click", () => sensorCheck(studentInRect2))
- document.getElementById ("Enter3").addEventListener ("click", () => sensorCheck(studentInRect3))
- document.getElementById ("Enter4").addEventListener ("click", () => sensorCheck(studentInRect4))
- document.getElementById ("Enter5").addEventListener ("click", () => sensorCheck(studentInRect5))
- document.getElementById ("Leave1").addEventListener ("click", () => sensorCheck(studentInRect1))
- document.getElementById ("Leave2").addEventListener ("click", () => sensorCheck(studentInRect2))
- document.getElementById ("Leave3").addEventListener ("click", () => sensorCheck(studentInRect3))
- document.getElementById ("Leave4").addEventListener ("click", () => sensorCheck(studentInRect4))
- document.getElementById ("Leave5").addEventListener ("click", () => sensorCheck(studentInRect5))
+// order of parameters:
+// ,b_StudentOrTeacher, b_DeskOrNot, b_EntryOrExit
+
+    document.getElementById ("Enter1").addEventListener ("click", () => sensorCheck(currentClass.studentInRect1, 0, 0, 0))
+    document.getElementById ("Enter2").addEventListener ("click", () => sensorCheck(currentClass.studentInRect2, 0, 0, 0))
+    document.getElementById ("Enter3").addEventListener ("click", () => sensorCheck(currentClass.studentInRect3, 0, 0, 0))
+    document.getElementById ("Enter4").addEventListener ("click", () => sensorCheck(currentClass.studentInRect4, 0, 0, 0))
+    document.getElementById ("Enter5").addEventListener ("click", () => sensorCheck(currentClass.studentInRect5, 0, 0, 0))
+    document.getElementById ("Exit1").addEventListener ("click", () => sensorCheck(currentClass.studentInRect1, 0, 0, 1))
+    document.getElementById ("Exit2").addEventListener ("click", () => sensorCheck(currentClass.studentInRect2, 0, 0, 1))
+    document.getElementById ("Exit3").addEventListener ("click", () => sensorCheck(currentClass.studentInRect3, 0, 0, 1))
+    document.getElementById ("Exit4").addEventListener ("click", () => sensorCheck(currentClass.studentInRect4, 0, 0, 1))
+    document.getElementById ("Exit5").addEventListener ("click", () => sensorCheck(currentClass.studentInRect5, 0, 0, 1))
+
+// Instructor and question rectangles 
+    document.getElementById ("EnterQ").addEventListener ("click", () => sensorCheck(currentClass.studentInRect2, 0, 1, 0))
+    document.getElementById ("ExitQ").addEventListener ("click", () => sensorCheck(currentClass.studentInRect3, 0, 1, 1))
+    document.getElementById ("EnterI").addEventListener ("click", () => sensorCheck(currentClass.studentInRect4, 1, 0, 0))
+    document.getElementById ("ExitI").addEventListener ("click", () => sensorCheck(currentClass.studentInRect5, 1, 0, 1))    
     
+// EnterQ
+// ExitQ
+// EnterI
+// ExitI
+
     function my_callback(toSet) {
         if (request.status == 200) {
-    console.log("Request successful ");
+          console.log("Request successful ");
 
-
-        document.getElementById("thispart").innerHTML = request.responseText;
+          var node = document.createElement("LI");               
+          var textnode = document.createTextNode(request.responseText);      
+          node.appendChild(textnode);                            
+          document.getElementById("myList").appendChild(node);    
+          toSet.data = true;
 
         }
         else if (request.status=404) {
-        alert("Server was not found: data returned is :\n"+request.responseText);
+          alert("Server was not found: data returned is :\n"+request.responseText);
     
         }
     
@@ -125,4 +166,3 @@
 
 </body>
 </html>
-<!--  cha cha cha -->

@@ -1,4 +1,3 @@
-
     class1 = {
         number : 1,
         rectI : {occupied: 0},

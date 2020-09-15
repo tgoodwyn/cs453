@@ -234,7 +234,7 @@
     
     }
 
-    function generic(given) {
+    function sensorCheck(currentStudent) {
 
       request = new XMLHttpRequest();
       request.open("GET","index.php?occupied="+given.data);
@@ -248,17 +248,28 @@
     
     }
 
- document.getElementById ("Enter1").addEventListener ("click", () => generic(currentClass.studentInRect1))
- document.getElementById ("Enter2").addEventListener ("click", studentEnterRect2)
- document.getElementById ("Enter3").addEventListener ("click", studentEnterRect3)
- document.getElementById ("Enter4").addEventListener ("click", studentEnterRect4)
- document.getElementById ("Enter5").addEventListener ("click", studentEnterRect5)
- document.getElementById ("Exit1").addEventListener ("click", studentExitRect1)
- document.getElementById ("Exit2").addEventListener ("click", studentExitRect2)
- document.getElementById ("Exit3").addEventListener ("click", studentExitRect3)
- document.getElementById ("Exit4").addEventListener ("click", studentExitRect4)
- document.getElementById ("Exit5").addEventListener ("click", studentExitRect5)
-    
+//  document.getElementById ("Enter1").addEventListener ("click", () => generic(currentClass.studentInRect1))
+//  document.getElementById ("Enter2").addEventListener ("click", studentEnterRect2)
+//  document.getElementById ("Enter3").addEventListener ("click", studentEnterRect3)
+//  document.getElementById ("Enter4").addEventListener ("click", studentEnterRect4)
+//  document.getElementById ("Enter5").addEventListener ("click", studentEnterRect5)
+//  document.getElementById ("Exit1").addEventListener ("click", studentExitRect1)
+//  document.getElementById ("Exit2").addEventListener ("click", studentExitRect2)
+//  document.getElementById ("Exit3").addEventListener ("click", studentExitRect3)
+//  document.getElementById ("Exit4").addEventListener ("click", studentExitRect4)
+//  document.getElementById ("Exit5").addEventListener ("click", studentExitRect5)
+ document.getElementById ("Enter1").addEventListener ("click", () => sensorCheck(studentInRect1))
+ document.getElementById ("Enter2").addEventListener ("click", () => sensorCheck(studentInRect2))
+ document.getElementById ("Enter3").addEventListener ("click", () => sensorCheck(studentInRect3))
+ document.getElementById ("Enter4").addEventListener ("click", () => sensorCheck(studentInRect4))
+ document.getElementById ("Enter5").addEventListener ("click", () => sensorCheck(studentInRect5))
+ document.getElementById ("Leave1").addEventListener ("click", () => sensorCheck(studentInRect1))
+ document.getElementById ("Leave2").addEventListener ("click", () => sensorCheck(studentInRect2))
+ document.getElementById ("Leave3").addEventListener ("click", () => sensorCheck(studentInRect3))
+ document.getElementById ("Leave4").addEventListener ("click", () => sensorCheck(studentInRect4))
+ document.getElementById ("Leave5").addEventListener ("click", () => sensorCheck(studentInRect5))
+
+
     function my_callback(toSet) {
         if (request.status == 200) {
     console.log("Request successful ");

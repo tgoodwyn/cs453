@@ -42,17 +42,26 @@ instructorWipesUponExit          = 1;
 instructorSanitizesUponExit      = 1;
 instructorIsWearingMask          = 1;
 
+queryDict = {
+
+// Student + Question + Entry 
+    "000" :  "&IsWearingMask="+currentStudentIsWearingMask,
+// Student + Regular + Entry
+    "010" :  "&DoesWipe="+currentStudentWipesUponEntry+"&IsWearingMask="+currentStudentIsWearingMask,
+// Student + Regular + Exit
+    "011" :  "&DoesWipe="+currentStudentWipesUponExit+"&DoesSanitize"+currentStudentSanitizesUponExit,
+// Teacher + Regular + Entry
+    "100" :  "&DoesWipe="+instructorWipesUponEntry+"&IsWearingMask="+instructorIsWearingMask,
+// Teacher + Regular + Exit
+    "101" :  "&DoesWipe="+instructorWipesUponExit+"&DoesSanitize"+instructorSanitizesUponExit
+
+}
 // To do : for each function , include in PHP request the related boolean currentClass variables ( e.g. currentClass. studentInRect1 for studentEnterRect1() )
 // To do : for each function , include in PHP request the related boolean currentStudent variables ( e.g. currentStudentWipesUponEntry for studentEnterRect1(), currentStudentSanitizesUponExit for studentExitRect1(), etc. )
-
 // NOTE ON PARAMETER NAMES:
 // b_ for boolean value
 // rectID
 // currentRect.occupancy
-
-queryDict = {
-// ,b_StudentOrTeacher, b_DeskOrNot, b_EntryOrExit
-}
 function sensorCheck(classNum, currentRect, b_StudentOrTeacher, b_NoDeskOrYes, b_EntryOrExit) {
     request = new XMLHttpRequest();
     request.onreadystatechange = function () {
@@ -64,8 +73,19 @@ function sensorCheck(classNum, currentRect, b_StudentOrTeacher, b_NoDeskOrYes, b
     // b_EntryOrExit
     // b_StudentOrTeacher
     // b_DeskOrNot 
+    bitField = ""
+    let a = [b_StudentOrTeacher, b_NoDeskOrYes, b_EntryOrExit]
+    for (let i = 0; i < a.length; i++) {
+        bitField += a[i].toString();
+    }
+  
+    // for (x in [b_StudentOrTeacher, b_NoDeskOrYes, b_EntryOrExit]) {
+    //     bitField += x.toString()
+    // }
 
-    request.open("GET","index.php?occupied="+currentRect.occupied+"&StudentOrTeacher="+b_StudentOrTeacher+"&NoDeskOrYes="+b_NoDeskOrYes+"&EntryOrExit="+b_EntryOrExit);
+    console.log(bitField)
+    // bitField = "100"
+    request.open("GET","index.php?occupied="+currentRect.occupied+queryDict[bitField]);
     request.send();
 }
 

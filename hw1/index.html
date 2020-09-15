@@ -1,54 +1,263 @@
 <html>
 
+
+<head>
+<!-- To do : add HTML for switching between which of the three classes that the configuration / simulation buttons apply to  -->
+</head>
 <body>
 
+<!-- To do : Change header info  -->
 <h1 id="myHeader"> This is an AJAX example</h1>
 <p> This code describes how to do an AJAX example </p>
 <p id="thispart"> This is the part that is updated </p>
 <p> It cleverly updates only part of a web page </p>
 
-<form action = "index.php"
-   <p> Enter your name: <input type="text" name="myname" />
+<!-- To do : Create radio buttons for selecting student configuration options -->
+<!-- To do : Create drop down menu for selecting current classroom  -->
 
-   <button type = "button"  onclick = "doAJAXstuff(this.form)">
-    Paint part of the web page
-   </button>
- </p>
+<form action = "index.php">
+    <button type = "button"  id="Enter1">
+        Student Enter Rect 1
+        </button>
+        <button type = "button"  id="Enter2">
+        Student Enter Rect 2
+        </button>
+        <button type = "button"  id="Enter3">
+        Student Enter Rect 3
+        </button>
+        <button type = "button"  id="Enter4">
+        Student Enter Rect 4
+        </button>
+        <button type = "button"  id="Enter5">
+        Student Enter Rect 5
+        </button>
+        <button type = "button"  id="Exit1">
+        Student Exit Rect 1
+        </button>
+        <button type = "button"  id="Exit2">
+        Student Exit Rect 2
+        </button>
+        <button type = "button"  id="Exit3">
+        Student Exit Rect 3
+        </button>
+        <button type = "button"  id="Exit4">
+        Student Exit Rect 4
+        </button>
+        <button type = "button"  id="Exit5">
+        Student Exit Rect 5
+        </button>
+
 </form>
 
+<!-- To do : Add buttons for instructor actions , question asking , class beginning and ending  -->
 
 <script type = "text/javascript">
 
-function doAJAXstuff(theform) {
-  request = new XMLHttpRequest();
-  request.open("GET","index.php?mydata="+theform.myname.value);
-
-  request.onreadystatechange = function () {
-     if (request.readyState == 4)
-         my_callback();
-  
-   }
-  request.send();
-
-} 
-
-function my_callback() {
-
-    if (request.status == 200) {
-     
-	document.getElementById("thispart").innerHTML = request.responseText;
-	document.getElementById("thispart").style.font = "italic bold 20px arial,serif";
-        alert("There wasn't an error, just wanted to let you see how an alert works. Received from the server:\n"+request.responseText);
+    class1 = {
+        instructorHasEntered : false,
+        studentInRect1 : false,
+        studentInRect2 : false,
+        studentInRect3 : false,
+        studentInRect4 : false,
+        studentInRect5 : false,
+        studentInRectQ : false
     }
-    else if (request.status=404) {
-	alert("Server was not found: data returned is :\n"+request.responseText);
-
+    class2 = {
+        instructorHasEntered : false,
+        studentInRect1 : false,
+        studentInRect2 : false,
+        studentInRect3 : false,
+        studentInRect4 : false,
+        studentInRect5 : false,
+        studentInRectQ : false
     }
+    class3 = {
+        instructorHasEntered : false,
+        studentInRect1 : false,
+        studentInRect2 : false,
+        studentInRect3 : false,
+        studentInRect4 : false,
+        studentInRect5 : false,
+        studentInRectQ : false
+    }
+    
+    // To do : Link drop down menu configuration options to set this variable
+    currentClass = class1;
 
-}
+    // To do : Link radio button configuration options to set these variables 
+    currentStudentWipesUponEntry = true;
+    currentStudentWipesUponExit = true;
+    currentStudentSanitizesUponExit = true;
+    currentStudentIsWearingMask = true;
+    
+// To do : for each function , include in PHP request the related boolean currentClass variables ( e.g. currentClass. studentInRect1 for studentEnterRect1() )
+// To do : for each function , include in PHP request the related boolean currentStudent variables ( e.g. currentStudentWipesUponEntry for studentEnterRect1(), currentStudentSanitizesUponExit for studentExitRect1(), etc. )
 
-</script>
 
+    function studentEnterRect1() {
+
+      request = new XMLHttpRequest();
+      request.open("GET","index.php");
+    
+      request.onreadystatechange = function () {
+         if (request.readyState == 4)
+             my_callback();
+    
+       }
+      request.send();
+    
+    }
+    
+    function studentEnterRect2() {
+      request = new XMLHttpRequest();
+      request.open("GET","index.php");
+    
+      request.onreadystatechange = function () {
+         if (request.readyState == 4)
+             my_callback();
+    
+       }
+      request.send();
+    
+    }
+    
+    
+    function studentEnterRect3() {
+      request = new XMLHttpRequest();
+      request.open("GET","index.php");
+    
+      request.onreadystatechange = function () {
+         if (request.readyState == 4)
+             my_callback();
+    
+       }
+      request.send();
+    
+    }
+    
+    
+    function studentEnterRect4() {
+      request = new XMLHttpRequest();
+      request.open("GET","index.php");
+    
+      request.onreadystatechange = function () {
+         if (request.readyState == 4)
+             my_callback();
+    
+       }
+      request.send();
+    
+    }
+    
+    
+    function studentEnterRect5() {
+      request = new XMLHttpRequest();
+      request.open("GET","index.php");
+    
+      request.onreadystatechange = function () {
+         if (request.readyState == 4)
+             my_callback();
+    
+       }
+      request.send();
+    
+    }
+    
+    
+    function studentExitRect1() {
+      request = new XMLHttpRequest();
+      request.open("GET","index.php");
+    
+      request.onreadystatechange = function () {
+         if (request.readyState == 4)
+             my_callback();
+    
+       }
+      request.send();
+    
+    }
+    
+    
+    function studentExitRect2() {
+      request = new XMLHttpRequest();
+      request.open("GET","index.php");
+    
+      request.onreadystatechange = function () {
+         if (request.readyState == 4)
+             my_callback();
+    
+       }
+      request.send();
+    
+    }
+    
+    
+    function studentExitRect3() {
+      request = new XMLHttpRequest();
+      request.open("GET","index.php");
+    
+      request.onreadystatechange = function () {
+         if (request.readyState == 4)
+             my_callback();
+    
+       }
+      request.send();
+    
+    }
+    
+    
+    function studentExitRect4() {
+      request = new XMLHttpRequest();
+      request.open("GET","index.php");
+    
+      request.onreadystatechange = function () {
+         if (request.readyState == 4)
+             my_callback();
+    
+       }
+      request.send();
+    
+    }
+    
+    
+    function studentExitRect5() {
+      request = new XMLHttpRequest();
+      request.open("GET","index.php");
+    
+      request.onreadystatechange = function () {
+         if (request.readyState == 4)
+             my_callback();
+    
+       }
+      request.send();
+    
+    }
+ document.getElementById ("Enter1").addEventListener ("click", studentEnterRect1)
+ document.getElementById ("Enter2").addEventListener ("click", studentEnterRect2)
+ document.getElementById ("Enter3").addEventListener ("click", studentEnterRect3)
+ document.getElementById ("Enter4").addEventListener ("click", studentEnterRect4)
+ document.getElementById ("Enter5").addEventListener ("click", studentEnterRect5)
+ document.getElementById ("Exit1").addEventListener ("click", studentExitRect1)
+ document.getElementById ("Exit2").addEventListener ("click", studentExitRect2)
+ document.getElementById ("Exit3").addEventListener ("click", studentExitRect3)
+ document.getElementById ("Exit4").addEventListener ("click", studentExitRect4)
+ document.getElementById ("Exit5").addEventListener ("click", studentExitRect5)
+    
+    function my_callback() {
+        if (request.status == 200) {
+    console.log("Request successful ");
+         
+        document.getElementById("thispart").innerHTML = request.responseText;
+
+        }
+        else if (request.status=404) {
+        alert("Server was not found: data returned is :\n"+request.responseText);
+    
+        }
+    
+    }
+    
+    </script>
 
 
 </body>

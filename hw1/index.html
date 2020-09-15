@@ -68,33 +68,33 @@
 
     class1 = {
         number : 1,
-        instructorHasEntered : {data: false},
-        studentInRect1 : {data: false},
-        studentInRect2 : {data: false},
-        studentInRect3 : {data: false},
-        studentInRect4 : {data: false},
-        studentInRect5 : {data: false},
-        studentInRectQ : {data: false}
+        instructorHasEntered : {data: 0},
+        studentInRect1 : {data: 0},
+        studentInRect2 : {data: 0},
+        studentInRect3 : {data: 0},
+        studentInRect4 : {data: 0},
+        studentInRect5 : {data: 0},
+        studentInRectQ : {data: 0}
     }
     class2 = {
         number : 2,
-        instructorHasEntered : {data: false},
-        studentInRect1 : {data: false},
-        studentInRect2 : {data: false},
-        studentInRect3 : {data: false},
-        studentInRect4 : {data: false},
-        studentInRect5 : {data: false},
-        studentInRectQ : {data: false}
+        instructorHasEntered : {data: 0},
+        studentInRect1 : {data: 0},
+        studentInRect2 : {data: 0},
+        studentInRect3 : {data: 0},
+        studentInRect4 : {data: 0},
+        studentInRect5 : {data: 0},
+        studentInRectQ : {data: 0}
     }
     class3 = {
         number : 3,
-        instructorHasEntered : {data: false},
-        studentInRect1 : {data: false},
-        studentInRect2 : {data: false},
-        studentInRect3 : {data: false},
-        studentInRect4 : {data: false},
-        studentInRect5 : {data: false},
-        studentInRectQ : {data: false}
+        instructorHasEntered : {data: 0},
+        studentInRect1 : {data: 0},
+        studentInRect2 : {data: 0},
+        studentInRect3 : {data: 0},
+        studentInRect4 : {data: 0},
+        studentInRect5 : {data: 0},
+        studentInRectQ : {data: 0}
     }
     
     // To do : Link drop down menu configuration options to set this variable
@@ -154,7 +154,7 @@
           var textnode = document.createTextNode(request.responseText);      
           node.appendChild(textnode);                            
           document.getElementById("myList").appendChild(node);    
-          toSet.data = true;
+          toSet.data = 1;
 
         }
         else if (request.status=404) {

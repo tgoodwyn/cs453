@@ -231,7 +231,7 @@
       request.send();
     
     }
- document.getElementById ("Enter1").addEventListener ("click", studentEnterRect1)
+ document.getElementById ("Enter1").addEventListener ("click", () => studentEnterRect1())
  document.getElementById ("Enter2").addEventListener ("click", studentEnterRect2)
  document.getElementById ("Enter3").addEventListener ("click", studentEnterRect3)
  document.getElementById ("Enter4").addEventListener ("click", studentEnterRect4)
@@ -245,12 +245,7 @@
     function my_callback(toSet) {
         if (request.status == 200) {
     console.log("Request successful ");
-    console.log(toSet.data);
-    console.log(currentClass.instructorHasEntered);
 
-
-        toSet.data = "pickles";
-    console.log(currentClass.studentInRect1.data);
 
         document.getElementById("thispart").innerHTML = request.responseText;
 

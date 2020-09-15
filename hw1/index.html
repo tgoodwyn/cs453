@@ -1,175 +1,66 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <script src="index.js"></script>
+        <title>CS 453 Project</title>
+    </head>
+    <body>
+        <header class="main-header">CS 453 Project 1</header>
+        <div class="main-div">
+            <!-- This section handles the part of selecting classes and starting the sim-->
+            <div class="sidebar">
+                <div class="custom-select">
+                    <select id="class-selection" class="selection-box" onload="class_change()" onchange="class_change()">
+                      <option value="0">Class 1</option>
+                      <option value="1">Class 2</option>
+                      <option value="2">Class 3</option>
+                    </select>
+                </div>
+                <div class="custom-button">
+                    <button id="class-start" onclick="setColorUpdateBoolean('class-start')" class="class-start">Start Class</button>
+                </div>
+            </div>
+            
+
+            <!-- This section handles the configurations-->
+            <div>
+                <div class="config" id=class1 style="display: block;">
+                    <div class="radio-options">
+                        <p class="radio-class-title">Student 1</p>
+                        <form action = "index.php">
+                            <button type = "button"  id="Enter1" onclick="sensorCheck(currentClass.number, currentClass.studentInRect1, 0, 0, 0)">   Student Enter Rect 1            </button>
+                            <button type = "button"  id="Enter2" onclick="sensorCheck(currentClass.number, currentClass.studentInRect2, 0, 0, 0)">   Student Enter Rect 2            </button>
+                            <button type = "button"  id="Enter3" onclick="sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 0, 0)">   Student Enter Rect 3            </button>
+                            <button type = "button"  id="Enter4" onclick="sensorCheck(currentClass.number, currentClass.studentInRect4, 0, 0, 0)">   Student Enter Rect 4            </button>
+                            <button type = "button"  id="Enter5" onclick="sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 0)">   Student Enter Rect 5            </button>
+                            <button type = "button"  id="Exit1" onclick="sensorCheck(currentClass.number, currentClass.studentInRect1, 0, 0, 1)">    Student Exit Rect 1             </button>
+                            <button type = "button"  id="Exit2" onclick="sensorCheck(currentClass.number, currentClass.studentInRect2, 0, 0, 1)">    Student Exit Rect 2             </button>
+                            <button type = "button"  id="Exit3" onclick="sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 0, 1)">    Student Exit Rect 3             </button>
+                            <button type = "button"  id="Exit4" onclick="sensorCheck(currentClass.number, currentClass.studentInRect4, 0, 0, 1)">    Student Exit Rect 4             </button>
+                            <button type = "button"  id="Exit5" onclick="sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 1)">    Student Exit Rect 5             </button>
+                            <button type = "button"  id="EnterQ" onclick="sensorCheck(currentClass.number, currentClass.studentInRectQ, 0, 0, 0)">   Student Enter Question Rect     </button>
+                            <button type = "button"  id="ExitQ" onclick="sensorCheck(currentClass.number, currentClass.studentInRectQ, 0, 0, 1)">    Student Exit Question Rect      </button>
+                            <button type = "button"  id="EnterI" onclick="sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 0)">   Instructor Enter                </button>
+                            <button type = "button"  id="ExitI" onclick="sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 0)">    Instructor Exit                 </button>  
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 
-<head>
-<!-- To do : add HTML for switching between which of the three classes that the configuration / simulation buttons apply to  -->
-</head>
-<body>
-
-<!-- To do : Change header info  -->
-<h1 id="myHeader"> This is an AJAX example</h1>
-<p> This code describes how to do an AJAX example </p>
-<p id="thispart"> This is the part that is updated </p>
-<p> It cleverly updates only part of a web page </p>
-
-<!-- To do : Create radio buttons for selecting student configuration options -->
-<!-- To do : Create drop down menu for selecting current classroom  -->
-
-<form action = "index.php">
-    <button type = "button"  id="Enter1">
-        Student Enter Rect 1
-        </button>
-        <button type = "button"  id="Enter2">
-        Student Enter Rect 2
-        </button>
-        <button type = "button"  id="Enter3">
-        Student Enter Rect 3
-        </button>
-        <button type = "button"  id="Enter4">
-        Student Enter Rect 4
-        </button>
-        <button type = "button"  id="Enter5">
-        Student Enter Rect 5
-        </button>
-        <button type = "button"  id="Exit1">
-        Student Exit Rect 1
-        </button>
-        <button type = "button"  id="Exit2">
-        Student Exit Rect 2
-        </button>
-        <button type = "button"  id="Exit3">
-        Student Exit Rect 3
-        </button>
-        <button type = "button"  id="Exit4">
-        Student Exit Rect 4
-        </button>
-        <button type = "button"  id="Exit5">
-        Student Exit Rect 5
-        </button>
-        <button type = "button"  id="EnterQ">
-        Student Enter Question Rect
-        </button>
-        <button type = "button"  id="ExitQ">
-        Student Exit Question Rect
-        </button>
-        <button type = "button"  id="EnterI">
-        Instructor Enter 
-        </button>
-        <button type = "button"  id="ExitI">
-          Instructor Exit
-        </button>  
-
-</form>
-<ul id="myList"></ul>
-
-<!-- To do : Add buttons for instructor actions , question asking , class beginning and ending  -->
-
-<script type = "text/javascript">
-
-    class1 = {
-        number : 1,
-        instructorHasEntered : {data: 0},
-        studentInRect1 : {data: 0},
-        studentInRect2 : {data: 0},
-        studentInRect3 : {data: 0},
-        studentInRect4 : {data: 0},
-        studentInRect5 : {data: 0},
-        studentInRectQ : {data: 0}
-    }
-    class2 = {
-        number : 2,
-        instructorHasEntered : {data: 0},
-        studentInRect1 : {data: 0},
-        studentInRect2 : {data: 0},
-        studentInRect3 : {data: 0},
-        studentInRect4 : {data: 0},
-        studentInRect5 : {data: 0},
-        studentInRectQ : {data: 0}
-    }
-    class3 = {
-        number : 3,
-        instructorHasEntered : {data: 0},
-        studentInRect1 : {data: 0},
-        studentInRect2 : {data: 0},
-        studentInRect3 : {data: 0},
-        studentInRect4 : {data: 0},
-        studentInRect5 : {data: 0},
-        studentInRectQ : {data: 0}
-    }
-    
-    // To do : Link drop down menu configuration options to set this variable
-    currentClass = class1;
-
-    // To do : Link radio button configuration options to set these variables 
-    currentStudentWipesUponEntry     = 1;
-    currentStudentWipesUponExit      = 1;
-    currentStudentSanitizesUponExit  = 1;
-    currentStudentIsWearingMask      = 1;
-    instructorWipesUponEntry         = 1;
-    instructorWipesUponExit          = 1;
-    instructorSanitizesUponExit      = 1;
-    instructorIsWearingMask          = 1;
-    
-    // To do : for each function , include in PHP request the related boolean currentClass variables ( e.g. currentClass. studentInRect1 for studentEnterRect1() )
-    // To do : for each function , include in PHP request the related boolean currentStudent variables ( e.g. currentStudentWipesUponEntry for studentEnterRect1(), currentStudentSanitizesUponExit for studentExitRect1(), etc. )
-
-    // NOTE ON PARAMETER NAMES:
-    // b_ for boolean value
-    function sensorCheck(classNum, currentStudent, b_StudentOrTeacher, b_DeskOrNot, b_EntryOrExit) {
-        request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-          if (request.readyState == 4)
-              my_callback(currentStudent);
-        }
-        request.open("GET","index.php?occupied="+currentStudent.data+"&StudentOrTeacher="+b_StudentOrTeacher+"&DeskOrNot="+b_DeskOrNot+"&EntryOrExit="+b_EntryOrExit);
-        request.send();
-    }
-
-// order of parameters:
-// ,b_StudentOrTeacher, b_DeskOrNot, b_EntryOrExit
-
-    document.getElementById ("Enter1").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect1, 0, 0, 0))
-    document.getElementById ("Enter2").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect2, 0, 0, 0))
-    document.getElementById ("Enter3").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 0, 0))
-    document.getElementById ("Enter4").addEventListener ("click", () => sensorCheck(currentClass.studentInRect4, 0, 0, 0))
-    document.getElementById ("Enter5").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 0))
-    document.getElementById ("Exit1").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect1, 0, 0, 1))
-    document.getElementById ("Exit2").addEventListener ("click", () => sensorCheck(currentClass.studentInRect2, 0, 0, 1))
-    document.getElementById ("Exit3").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 0, 1))
-    document.getElementById ("Exit4").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect4, 0, 0, 1))
-    document.getElementById ("Exit5").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 1))
-
-// Instructor and question rectangles 
-    document.getElementById ("EnterQ").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect2, 0, 1, 0))
-    document.getElementById ("ExitQ").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 1, 1))
-    document.getElementById ("EnterI").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect4, 1, 0, 0))
-    document.getElementById ("ExitI").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.studentInRect5, 1, 0, 1))    
-    
-// EnterQ
-// ExitQ
-// EnterI
-// ExitI
-
-    function my_callback(toSet) {
-        if (request.status == 200) {
-          console.log("Request successful ");
-
-          var node = document.createElement("LI");               
-          var textnode = document.createTextNode(request.responseText);      
-          node.appendChild(textnode);                            
-          document.getElementById("myList").appendChild(node);    
-          toSet.data = 1;
-
-        }
-        else if (request.status=404) {
-          alert("Server was not found: data returned is :\n"+request.responseText);
-    
-        }
-    
-    }
-    
-    </script>
-
-
-</body>
+            <!-- This section is just for the logging of the errors-->
+            <div class="console">
+                <div class="scrollable">
+                    <ul id="consoleClass1" class="console-log"></ul>
+                </div>
+                <div class="scrollable">
+                    <ul id="consoleClass2" class="console-log"></ul>
+                </div>
+                <div class="scrollable">
+                    <ul id="consoleClass3" class="console-log"></ul>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

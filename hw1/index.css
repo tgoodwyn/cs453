@@ -1,0 +1,107 @@
+.main-div {
+    background-color: #1b5c47;
+}
+
+.main-header {
+    background-color: #3C6E71;
+    border: 3px solid #353535;
+    position: absolute;
+    top: 2px;
+    width: 99%;
+    height: 9%;
+
+    /* Editing the text properties */
+    text-align: center;
+    font-size: 400%;
+}
+
+.sidebar {
+    background-color: #3C6E71;
+    border: 3px solid #353535;
+    position: absolute;
+    left: 8px;
+    top: 10%;
+    width: 10%;
+    height: 73%;
+}
+
+.config {
+    background-color: #3C6E71;
+    border: 3px solid #353535;
+    position: absolute;
+    right: 4px;
+    top: 10%;
+    width: 88.5%;
+    height: 73%;
+}
+
+.console {
+    background-color: #3C6E71;
+    border: 3px solid #353535;
+    position: absolute;
+    bottom: 4px;
+    width: 99%;
+    height: 15%;
+    display: flex;
+}
+
+.cs-top-margin {
+    margin-top: 4px;
+}
+
+.cs-right-margin {
+    margin-right: 4px;
+}
+
+.cs-left-margin {
+    margin-left: 4px;
+}
+
+.cs-bot-margin {
+    margin-bottom: 4px;
+}
+
+.scrollable {
+    overflow-y:auto;
+    width: 40%;
+    border: 2px solid #353535;
+}
+
+.console-log {
+    text-align: left;
+    font-size: large;
+    padding: 4px;
+}
+
+.custom-select {
+    padding: 4px;
+    position: absolute;
+    left: 20%;
+    top: 10%;
+}
+
+.selection-box {
+    width: 150%;
+    text-align: center;
+}
+
+.custom-button {
+    padding: 4px;
+    position: absolute;
+    left: 20%;
+    top: 20%;
+}
+
+.class-start {
+    width: 125%;
+    text-align: center;
+}
+
+.radio-options {
+    padding: 1%;
+}
+
+.radio-class-title {
+    text-align: center;
+    font-size: medium;
+}

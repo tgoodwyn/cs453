@@ -26,24 +26,54 @@
             <!-- This section handles the configurations-->
             <div>
                 <div class="config" id=class1 style="display: block;">
-                    <div class="radio-options">
-                        <p class="radio-class-title">Student 1</p>
-                        <form action = "index.php">
-                            <button type = "button"  id="Enter1" onclick="sensorCheck(currentClass.number, currentClass.studentInRect1, 0, 0, 0)">   Student Enter Rect 1            </button>
-                            <button type = "button"  id="Enter2" onclick="sensorCheck(currentClass.number, currentClass.studentInRect2, 0, 0, 0)">   Student Enter Rect 2            </button>
-                            <button type = "button"  id="Enter3" onclick="sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 0, 0)">   Student Enter Rect 3            </button>
-                            <button type = "button"  id="Enter4" onclick="sensorCheck(currentClass.number, currentClass.studentInRect4, 0, 0, 0)">   Student Enter Rect 4            </button>
-                            <button type = "button"  id="Enter5" onclick="sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 0)">   Student Enter Rect 5            </button>
-                            <button type = "button"  id="Exit1" onclick="sensorCheck(currentClass.number, currentClass.studentInRect1, 0, 0, 1)">    Student Exit Rect 1             </button>
-                            <button type = "button"  id="Exit2" onclick="sensorCheck(currentClass.number, currentClass.studentInRect2, 0, 0, 1)">    Student Exit Rect 2             </button>
-                            <button type = "button"  id="Exit3" onclick="sensorCheck(currentClass.number, currentClass.studentInRect3, 0, 0, 1)">    Student Exit Rect 3             </button>
-                            <button type = "button"  id="Exit4" onclick="sensorCheck(currentClass.number, currentClass.studentInRect4, 0, 0, 1)">    Student Exit Rect 4             </button>
-                            <button type = "button"  id="Exit5" onclick="sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 1)">    Student Exit Rect 5             </button>
-                            <button type = "button"  id="EnterQ" onclick="sensorCheck(currentClass.number, currentClass.studentInRectQ, 0, 0, 0)">   Student Enter Question Rect     </button>
-                            <button type = "button"  id="ExitQ" onclick="sensorCheck(currentClass.number, currentClass.studentInRectQ, 0, 0, 1)">    Student Exit Question Rect      </button>
-                            <button type = "button"  id="EnterI" onclick="sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 0)">   Instructor Enter                </button>
-                            <button type = "button"  id="ExitI" onclick="sensorCheck(currentClass.number, currentClass.studentInRect5, 0, 0, 0)">    Instructor Exit                 </button>  
-                        </form>
+                    <div class="config-options config-sub-container">
+                        <div class="config-properties student-enter">
+                            <p>Student Enter Config</p>
+                            <form action = "index.php">
+                                <button class="button-organizer2" type = "button"  id="EnterMask" onclick="updateBoolean('EnterMask')">   Mask            </button>
+                                <button class="button-organizer2" type = "button"  id="EnterWipe" onclick="updateBoolean('EnterWipe')">   Wipedown        </button>
+                            </form>
+                        </div>
+                        <div class="config-properties instructor-enter">
+                            <p>Instructor Config</p>
+                            <form action = "index.php">
+                                <button class="button-organizer2" type = "button"  id="InstMask" onclick="updateBoolean('InstMask')">               Mask                </button>
+                                <button class="button-organizer2" type = "button"  id="InstWash" onclick="updateBoolean('InstWash')">               Handwash            </button>
+                                <button class="button-organizer2" type = "button"  id="InstWipeEntry" onclick="updateBoolean('InstWipeEntry')">     Enter Wipedown      </button>
+                                <button class="button-organizer2" type = "button"  id="InstWipeExit" onclick="updateBoolean('InstWipeExit')">       Exit Wipedown       </button>
+                            </form>
+                        </div>
+                        <div class="config-properties student-exit">
+                            <p>Student exit Config</p>
+                            <form action = "index.php">
+                                <button class="button-organizer2" type = "button"  id="ExitWash" onclick="updateBoolean('ExitWash')">   Handwash        </button>
+                                <button class="button-organizer2" type = "button"  id="ExitWipe" onclick="updateBoolean('ExitWipe')">   Wipedown        </button>
+                            </form>
+                        </div>
+
+                    </div>
+                    <header class="enter-exit-header">Enter Exiting Buttons</header>
+                    <div class="config-options button-align">
+                            <form action = "index.php">
+                                <button class="button-organizer" type = "button"  id="Enter1" onclick="sensorCheck(currentClass.number, currentClass.rect1,  0, 1, 0)">   Student Enter Rect 1            </button>
+                                <button class="button-organizer" type = "button"  id="Enter2" onclick="sensorCheck(currentClass.number, currentClass.rect2,  0, 1, 0)">   Student Enter Rect 2            </button>
+                                <button class="button-organizer" type = "button"  id="Enter3" onclick="sensorCheck(currentClass.number, currentClass.rect3,  0, 1, 0)">   Student Enter Rect 3            </button>
+                                <button class="button-organizer" type = "button"  id="Enter4" onclick="sensorCheck(currentClass.number, currentClass.rect4,  0, 1, 0)">   Student Enter Rect 4            </button>
+                                <button class="button-organizer" type = "button"  id="Enter5" onclick="sensorCheck(currentClass.number, currentClass.rect5,  0, 1, 0)">   Student Enter Rect 5            </button>
+                                <button class="button-organizer" type = "button"  id="EnterQ" onclick="sensorCheck(currentClass.number, currentClass.rectQ, 0, 0, 0)">    Student Enter Question Rect     </button>
+                                <button class="button-organizer" type = "button"  id="EnterI" onclick="sensorCheck(currentClass.number, currentClass.rect5, 1, 1, 0)">    Instructor Enter                </button>
+                            </form>
+                            <header class="spacer"> </header>
+                            <form action = "index.php">
+                                <button class="button-organizer" type = "button"  id="Exit1" onclick="sensorCheck(currentClass.number, currentClass.rect1, 0, 1, 1)">     Student Exit Rect 1             </button>
+                                <button class="button-organizer" type = "button"  id="Exit2" onclick="sensorCheck(currentClass.number, currentClass.rect2, 0, 1, 1)">     Student Exit Rect 2             </button>
+                                <button class="button-organizer" type = "button"  id="Exit3" onclick="sensorCheck(currentClass.number, currentClass.rect3, 0, 1, 1)">     Student Exit Rect 3             </button>
+                                <button class="button-organizer" type = "button"  id="Exit4" onclick="sensorCheck(currentClass.number, currentClass.rect4, 0, 1, 1)">     Student Exit Rect 4             </button>
+                                <button class="button-organizer" type = "button"  id="Exit5" onclick="sensorCheck(currentClass.number, currentClass.rect5, 0, 1, 1)">     Student Exit Rect 5             </button>
+                                <button class="button-organizer" type = "button"  id="ExitQ" onclick="sensorCheck(currentClass.number, currentClass.rectQ, 0, 0, 1)">     Student Exit Question Rect      </button>
+                                <button class="button-organizer" type = "button"  id="ExitI" onclick="sensorCheck(currentClass.number, currentClass.rect5, 1, 1, 1)">     Instructor Exit                 </button>  
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,13 +81,19 @@
 
             <!-- This section is just for the logging of the errors-->
             <div class="console">
+                
                 <div class="scrollable">
+                    <header class="console-header">Console Class 1:</header>
                     <ul id="consoleClass1" class="console-log"></ul>
                 </div>
+
                 <div class="scrollable">
+                    <header class="console-header">Console Class 2:</header>
                     <ul id="consoleClass2" class="console-log"></ul>
                 </div>
+
                 <div class="scrollable">
+                    <header class="console-header">Console Class 3:</header>
                     <ul id="consoleClass3" class="console-log"></ul>
                 </div>
             </div>

@@ -7,15 +7,15 @@
   $person = $StudentOrTeacher ? "Teacher" : "Student";
   $action = $EntryOrExit ? "exits" : "enters";
 
-  
-  print "prior # of occupants = $occupied <br />";
   if (($occupied == 0) && $EntryOrExit) {
     print "(No one is there to exit)";
   } else {
+    $occupied = $EntryOrExit ? --$occupied : ++$occupied;
+
     print "Classrom $classNum: $person $action $targetRectId<br />";
+    print "# of occupants = $occupied <br />";
 
-
-    if (($occupied > 2) || (($occupied > 0) && !$EntryOrExit)) {
+    if (($occupied > 1) ) {//|| (($occupied == 1) && !$EntryOrExit)) {
       print "Social distancing alarm: Too many people!<br />";
     }
 

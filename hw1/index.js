@@ -264,24 +264,26 @@ function updateBoolean(btn) {
 }
 
 
-queryDict = {
 
-// Student + Question + Entry 
-    "000" :  "&IsWearingMask="+currentStudentIsWearingMask,
-// Student + Question + Exit 
-    "001" :  "",
-// Student + Regular + Entry
-    "010" :  "&DoesWipe="+currentStudentWipesUponEntry+"&IsWearingMask="+currentStudentIsWearingMask,
-// Student + Regular + Exit
-    "011" :  "&DoesWipe="+currentStudentWipesUponExit+"&DoesSanitize="+currentStudentSanitizesUponExit,
-// Teacher + Regular + Entry
-    "110" :  "&DoesWipe="+instructorWipesUponEntry+"&IsWearingMask="+instructorIsWearingMask,
-// Teacher + Regular + Exit
-    "111" :  "&DoesWipe="+instructorWipesUponExit+"&DoesSanitize="+instructorSanitizesUponExit
-
-}
 
 function sensorCheck(classNum, targetRect, b_StudentOrTeacher, b_NoDeskOrYes, b_EntryOrExit) {
+    
+    queryDict = {
+
+        // Student + Question + Entry 
+            "000" :  "&IsWearingMask="+currentStudentIsWearingMask,
+        // Student + Question + Exit 
+            "001" :  "",
+        // Student + Regular + Entry
+            "010" :  "&DoesWipe="+currentStudentWipesUponEntry+"&IsWearingMask="+currentStudentIsWearingMask,
+        // Student + Regular + Exit
+            "011" :  "&DoesWipe="+currentStudentWipesUponExit+"&DoesSanitize="+currentStudentSanitizesUponExit,
+        // Teacher + Regular + Entry
+            "110" :  "&DoesWipe="+instructorWipesUponEntry+"&IsWearingMask="+instructorIsWearingMask,
+        // Teacher + Regular + Exit
+            "111" :  "&DoesWipe="+instructorWipesUponExit+"&DoesSanitize="+instructorSanitizesUponExit
+        
+        }
 
     request = new XMLHttpRequest();
     request.onreadystatechange = function () {

@@ -2,11 +2,18 @@
   $occupied    = $_REQUEST["occupied"];
   $classNum    = $_REQUEST["classNum"];
   $targetRectId    = $_REQUEST["targetRectId"];
+  $EntryOrExit    = $_REQUEST["EntryOrExit"];
+  $StudentOrTeacher    = $_REQUEST["StudentOrTeacher"];
+  $person = $StudentOrTeacher ? "Teacher" : "Student";
+  $action = $EntryOrExit ? "exits" : "enters";
 
-  print "occupied    = $occupied  <br /> ";
-  print "classNum  = $classNum <br />";
-  print "targetRectId   = $targetRectId  <br />";
+    // if (isset($EntryOrExit)) {
+  // }
+  // print "occupied    = $occupied  <br /> ";
+  // print "classNum  = $classNum <br />";
+  // print "targetRectId   = $targetRectId  <br />";
   // print "EntryOrExit = $EntryOrExit<br />";
+  print "Classrom $classNum: $person $action $targetRectId<br />";
 
   if (isset($_REQUEST["IsWearingMask"])) {
     $IsWearingMask = ($_REQUEST["IsWearingMask"]);

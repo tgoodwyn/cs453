@@ -67,14 +67,16 @@ queryDict = {
 
 // Student + Question + Entry 
     "000" :  "&IsWearingMask="+currentStudentIsWearingMask,
+// Student + Question + Exit 
+    "001" :  "",
 // Student + Regular + Entry
     "010" :  "&DoesWipe="+currentStudentWipesUponEntry+"&IsWearingMask="+currentStudentIsWearingMask,
 // Student + Regular + Exit
-    "011" :  "&DoesWipe="+currentStudentWipesUponExit+"&DoesSanitize"+currentStudentSanitizesUponExit,
+    "011" :  "&DoesWipe="+currentStudentWipesUponExit+"&DoesSanitize="+currentStudentSanitizesUponExit,
 // Teacher + Regular + Entry
     "110" :  "&DoesWipe="+instructorWipesUponEntry+"&IsWearingMask="+instructorIsWearingMask,
 // Teacher + Regular + Exit
-    "111" :  "&DoesWipe="+instructorWipesUponExit+"&DoesSanitize"+instructorSanitizesUponExit
+    "111" :  "&DoesWipe="+instructorWipesUponExit+"&DoesSanitize="+instructorSanitizesUponExit
 
 }
 // To do : for each function , include in PHP request the related boolean currentClass variables ( e.g. currentClass. studentInRect1 for studentEnterRect1() )
@@ -102,7 +104,7 @@ function sensorCheck(classNum, targetRect, b_StudentOrTeacher, b_NoDeskOrYes, b_
 // +"&classNum="+classNum+"&targetRect="+targetRect.id
     console.log(bitField)
     // bitField = "100"
-    request.open("GET","index.php?occupied="+targetRect.occupied+"&classNum="+classNum+"&targetRectId="+targetRect.id+queryDict[bitField]);
+    request.open("GET","index.php?occupied="+targetRect.occupied+"&classNum="+classNum+"&targetRectId="+targetRect.id+queryDict[bitField]+"&EntryOrExit="+b_EntryOrExit+"&StudentOrTeacher="+b_StudentOrTeacher);
     request.send();
 }
 

@@ -14,7 +14,7 @@
   } else {
     print "Classrom $classNum: $person $action $targetRectId<br />";
 
-    
+
     if (($occupied > 2) || (($occupied > 0) && !$EntryOrExit)) {
       print "Social distancing alarm: Too many people!<br />";
     }
@@ -35,10 +35,6 @@
       } 
     }
   }
-
-  // if (($occupied == 0) && $EntryOrExit) {
-  //   print "(No one is there to exit)";
-  // }
 
   if (isset($_REQUEST["IsWearingMask"])) {
     $IsWearingMask = ($_REQUEST["IsWearingMask"]);

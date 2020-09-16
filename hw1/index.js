@@ -90,7 +90,7 @@ function sensorCheck(classNum, targetRect, b_StudentOrTeacher, b_NoDeskOrYes, b_
     request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState == 4)
-            my_callback(targetRect);
+            my_callback(targetRect, b_EntryOrExit);
     }
 
     // The logic pertaining to information that the sensor does not know about is done on the client side 
@@ -133,19 +133,26 @@ document.getElementById ("ExitI").addEventListener ("click", () => sensorCheck(c
 // EnterI
 // ExitI
 
-function my_callback(toSet) {
+function my_callback(updateRect, action) {
     if (request.status == 200) {
         console.log("Request successful ");
 
+        // UI updates
         var node = document.createElement("LI"); 
         var myDiv = document.createElement("div");
-        // myDiv.id = 'myDiv';
         myDiv.innerHTML = request.responseText;
-        // document.body.appendChild(request.responseText);              
-        // var textnode = document.createTextNode(request.responseText);      
         node.appendChild(myDiv);                            
         document.getElementById("myList").appendChild(node);    
-        toSet.occupied = 1;
+
+        // simulation updates
+        if (action) {
+            if (updateRect.occupied > 0) 
+                updateRect.occupied--;
+        }
+        else
+            updateRect.occupied++;
+
+
 
     }
     else if (request.status=404) {

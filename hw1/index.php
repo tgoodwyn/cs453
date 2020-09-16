@@ -7,46 +7,48 @@
   $person = $StudentOrTeacher ? "Teacher" : "Student";
   $action = $EntryOrExit ? "exits" : "enters";
 
-    // if (isset($EntryOrExit)) {
+  
+  print "prior # of occupants = $occupied <br />";
+  if (($occupied == 0) && $EntryOrExit) {
+    print "(No one is there to exit)";
+  } else {
+    print "Classrom $classNum: $person $action $targetRectId<br />";
+
+    
+    if (($occupied > 2) || (($occupied > 0) && !$EntryOrExit)) {
+      print "Social distancing alarm: Too many people!<br />";
+    }
+
+    if (isset($_REQUEST["DoesWipe"])) {
+      $DoesWipe = ($_REQUEST["DoesWipe"]);
+      
+      if(!$DoesWipe) {
+        print "Lysol alarm: Occupant did not wipe desk properly!<br />";
+      } 
+    }
+  
+    if (isset($_REQUEST["DoesSanitize"])) {
+      $DoesSanitize = ($_REQUEST["DoesSanitize"]);
+      
+      if(!$DoesSanitize) {
+        print "Hand washing station alarm: occupant did not sanitize upon leaving!<br />";
+      } 
+    }
+  }
+
+  // if (($occupied == 0) && $EntryOrExit) {
+  //   print "(No one is there to exit)";
   // }
-  // print "occupied    = $occupied  <br /> ";
-  // print "classNum  = $classNum <br />";
-  // print "targetRectId   = $targetRectId  <br />";
-  // print "EntryOrExit = $EntryOrExit<br />";
-  print "Classrom $classNum: $person $action $targetRectId<br />";
 
   if (isset($_REQUEST["IsWearingMask"])) {
     $IsWearingMask = ($_REQUEST["IsWearingMask"]);
     
     if(!$IsWearingMask) {
-      print "Occupant not wearing mask properly!";
+      print "Mask alarm: Occupant not wearing mask properly!<br />";
     } 
   }
-  // $occupied    = filter_var($_REQUEST["occupied"], FILTER_VALIDATE_BOOLEAN);
-  // $occupied    = $_REQUEST["occupied"];
-  // $StudentOrTeacher  = ($_REQUEST["StudentOrTeacher"]);
-  // $NoDeskOrYes   = ($_REQUEST["NoDeskOrYes"]);
-  // $EntryOrExit = ($_REQUEST["EntryOrExit"]);
-  // $IsWearingMask = ($_REQUEST["IsWearingMask"]);
-  // $IsWearingMask = isset($_REQUEST['IsWearingMask']) ? $_REQUEST['IsWearingMask'] : null;
 
-// if (isset(!$IsWearingMask)) {
-//     print "Variable IsWearingMask is set to false.<br>";
-// } else if (isset($IsWearingMask)) {
-//     print "Variable IsWearingMask is set to true.<br>";
-// } else {
-//     print "Variable IsWearingMask is not set.<br>";
-// }
-// }
-  // $IsWearingMask = ($_REQUEST["IsWearingMask"]);
-  
-  //   print "Variable IsWearingMask is set.<br>";
-  // } else {
-    
 
-  // print "occupied    = $occupied   <br />";
-  // print "StudentOrTeacher  = $StudentOrTeacher <br />";
-  // print "NoDeskOrYes   = $NoDeskOrYes  <br />";
-  // print "EntryOrExit = $EntryOrExit<br />";
+
 
   ?>

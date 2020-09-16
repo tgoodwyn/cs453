@@ -1,3 +1,5 @@
+// cha cha cha
+
 class1 = {
     number : 1,
     rectI : {
@@ -100,7 +102,6 @@ function get_class_index() {
     index = document.getElementById("class-selection").value;
     return index;
 }
-
 function class_change() {
     index = get_class_index();
     switch(index) {

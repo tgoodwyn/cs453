@@ -55,7 +55,7 @@ currentClass = class1;
 
 // To do : Link radio button configuration options to set these variables 
 currentStudentWipesUponEntry     = 1;
-currentStudentWipesUponExit      = 1;
+currentStudentWipesUponExit      = 0;
 currentStudentSanitizesUponExit  = 1;
 currentStudentIsWearingMask      = 0;
 instructorWipesUponEntry         = 1;
@@ -79,12 +79,7 @@ queryDict = {
     "111" :  "&DoesWipe="+instructorWipesUponExit+"&DoesSanitize="+instructorSanitizesUponExit
 
 }
-// To do : for each function , include in PHP request the related boolean currentClass variables ( e.g. currentClass. studentInRect1 for studentEnterRect1() )
-// To do : for each function , include in PHP request the related boolean currentStudent variables ( e.g. currentStudentWipesUponEntry for studentEnterRect1(), currentStudentSanitizesUponExit for studentExitRect1(), etc. )
-// NOTE ON PARAMETER NAMES:
-// b_ for boolean value
-// rectID
-// targetRect.occupancy
+
 function sensorCheck(classNum, targetRect, b_StudentOrTeacher, b_NoDeskOrYes, b_EntryOrExit) {
 
     request = new XMLHttpRequest();
@@ -101,15 +96,12 @@ function sensorCheck(classNum, targetRect, b_StudentOrTeacher, b_NoDeskOrYes, b_
     }
   
 
-// +"&classNum="+classNum+"&targetRect="+targetRect.id
     console.log(bitField)
-    // bitField = "100"
     request.open("GET","index.php?occupied="+targetRect.occupied+"&classNum="+classNum+"&targetRectId="+targetRect.id+queryDict[bitField]+"&EntryOrExit="+b_EntryOrExit+"&StudentOrTeacher="+b_StudentOrTeacher);
     request.send();
 }
 
-// order of parameters:
-// ,b_StudentOrTeacher, b_DeskOrNot, b_EntryOrExit
+
 
 document.getElementById ("Enter1").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.rect1, 0, 1, 0))
 document.getElementById ("Enter2").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.rect2, 0, 1, 0))
@@ -128,10 +120,7 @@ document.getElementById ("ExitQ").addEventListener ("click", () => sensorCheck(c
 document.getElementById ("EnterI").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.rectI, 1, 1, 0))
 document.getElementById ("ExitI").addEventListener ("click", () => sensorCheck(currentClass.number, currentClass.rectI, 1, 1, 1))    
 
-// EnterQ
-// ExitQ
-// EnterI
-// ExitI
+
 
 function my_callback(updateRect, action) {
     if (request.status == 200) {

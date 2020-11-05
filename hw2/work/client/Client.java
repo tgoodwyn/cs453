@@ -1,13 +1,12 @@
 package client;
-// import ServerFunc;
-// import HWService;
+
 
 public class Client {
 	public static void main(String[] args) {
 
-	HWService myHelloWorld = new HWService();
+	ServerService myHelloWorld = new ServerService();
 
-	ServerFunc myinterface = myHelloWorld.getHWPort();
+	ServerAPI myinterface = myHelloWorld.getServerPort();
 
         //Note the format of the operation call "helloWorld".  This
 	//matches the format in the wsimport-generated HelloWorld.java file.

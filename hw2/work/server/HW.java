@@ -4,7 +4,7 @@ import javax.jws.WebService;
  
 //Service Implementation
 @WebService(endpointInterface = "server.ServerFunc")
-public class HWImpl implements ServerFunc{
+public class HW implements ServerFunc{
  
 	@Override
 	public String HelloWorld(String name) {

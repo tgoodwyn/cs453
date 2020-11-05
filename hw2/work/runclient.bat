@@ -1,1 +1,1 @@
-java -cp . HelloWorldClient "Joe Blow"
+java -cp . client.Client "Joe Blow"

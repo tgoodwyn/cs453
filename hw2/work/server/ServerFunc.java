@@ -9,7 +9,7 @@ import javax.jws.soap.SOAPBinding.Style;
 @WebService
 @SOAPBinding(style = Style.RPC)
 
-public interface ServerFunc{
+public interface ServerAPI{
  
 	@WebMethod String HelloWorld(String name);
  

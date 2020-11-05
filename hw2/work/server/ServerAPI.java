@@ -12,5 +12,6 @@ import javax.jws.soap.SOAPBinding.Style;
 public interface ServerAPI{
  
 	@WebMethod String HelloWorld(String name);
+	@WebMethod String StudentEnter(int rectId, boolean wipes);
  
 }

@@ -15,8 +15,9 @@ public class Server implements ServerAPI{
 
 	@Override
 	public String StudentEnter(int rectId, boolean wipes) {
-		String response = "Student enters rectangle " + rectID;
+		String response = "Student enters rectangle " + rectId;
 		if (!wipes) response += ". ALERT: Failure to wipe";
+		return response;
 
 	}
  

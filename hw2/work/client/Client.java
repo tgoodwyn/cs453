@@ -8,7 +8,8 @@ public class Client {
 
 	ServerAPI myinterface = myHelloWorld.getServerPort();
 
-	String response = myinterface.helloWorld(args[0]);
+	String response;
+	response = myinterface.studentEnter(Integer.parseInt(args[0]), Boolean.parseBoolean(args[1]));
  
     System.out.println(response);
    }

@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Client {
 
   public static void main(String[] args) {
-    ServerService myHelloWorld = new ServerService();
-    ServerAPI myinterface = myHelloWorld.getServerPort();
+    ServerService service = new ServerService();
+    ServerAPI myinterface = service.getServerPort();
 
     String response = "";
     while (true) {
@@ -19,16 +19,42 @@ public class Client {
                 response = myinterface.studentEnter(0, 1, false, false);
                 break;
             case 2:
-                System.out.println("4");
+                response = myinterface.studentEnter(1, 2, false, false);
                 break;
+            case 3:
+                response = myinterface.studentEnter(0, 1, true, false);
+
+                break;
+            case 4:
+                response = myinterface.studentEnter(0, 1, false, true);
+
+                break;
+            case 5:
+                response = myinterface.studentExit(0, 1, false, false);
+
+                break;
+            case 6:
+                response = myinterface.instructorEnter(0, 0, false, false);
+                break;
+            // instructor tries to enter student rect
+            case 7:
+                response = myinterface.instructorEnter(0, 1, false, false);
+                break;
+            // student tries to enter instructor rect
+
             case 8:
-                response = myinterface.studentEnter(0, 8, false, false);
+                response = myinterface.studentEnter(0, 0, false, false);
                 break;
             case 9:
-                response = myinterface.studentEnter(0, 9, false, false);
-                break;                              
+                response = myinterface.studentExit(0, 1, true, false);
+
+                break;
+            case 10:
+                response = myinterface.instructorExit(0, false, false);
+                break;
+
         }
         System.out.println(response);
     }
-}
+    }
 }

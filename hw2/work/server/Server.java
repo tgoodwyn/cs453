@@ -108,7 +108,7 @@ public class Server implements ServerAPI{
             response += "ALERT: Failure to wipe\n";
         }
         if (!sanitizes) {
-            response += "ALERT: Failure to wear a mask\n";
+            response += "ALERT: Failure to sanitize\n";
         }
         return response;
 

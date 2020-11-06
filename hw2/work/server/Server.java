@@ -42,17 +42,17 @@ public class Server implements ServerAPI{
 	
 	@Override
 	public String instructorEnter(int classId, int rectId, boolean wipes, boolean mask) {
-		return ""
+		return "";
 	}
 
 	@Override
 	public String studentExit(int classId, int rectId, boolean wipes, boolean sanitizes){
-		return ""
+		return "";
 	}
 
 	@Override
 	public String instructorExit(int classId, int rectId, boolean wipes, boolean sanitizes){
-		return ""
+		return "";
 	}
 
  

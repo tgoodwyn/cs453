@@ -1,5 +1,6 @@
 
 command line copy pasta:
+javac ./*.java ./model/*.java
 javac *.java
 wsimport -keep http://localhost:8080/hello?wsdl -p client
 

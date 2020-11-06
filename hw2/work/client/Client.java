@@ -1,5 +1,5 @@
 package client;
-
+import java.util.Scanner;
 public class Client {
 
   public static void main(String[] args) {
@@ -16,18 +16,19 @@ public class Client {
         }
         switch (request) {
             case 1:
-                response = studentEnter(0, 1, false, false);
+                response = myinterface.studentEnter(0, 1, false, false);
                 break;
             case 2:
                 System.out.println("4");
                 break;
             case 8:
-                response = studentEnter(0, 8, false, false);
+                response = myinterface.studentEnter(0, 8, false, false);
                 break;
             case 9:
-                response = studentEnter(0, 9, false, false);
+                response = myinterface.studentEnter(0, 9, false, false);
                 break;                              
         }
         System.out.println(response);
     }
+}
 }

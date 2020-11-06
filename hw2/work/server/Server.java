@@ -80,7 +80,7 @@ public class Server implements ServerAPI{
             return response;
         }
 
-        String rectName = (rectId == 5) ? "for questions" : Integer.toString(rectId + 1);
+        String rectName = (rectId == 5) ? "for questions" : Integer.toString(rectId);
         response += "Student exits rectangle " + rectName + "\n";
         count = --rooms.get(classId).rectangles[rectId];
         response += "Now there are " + count + " occupants\n";
@@ -93,7 +93,7 @@ public class Server implements ServerAPI{
         return response;
     }
 
-	@Override
+	@Override     
     public String instructorExit(int classId, boolean wipes, boolean sanitizes) {
         String response = "";
         response += "Classroom " + (classId + 1) + "\n";

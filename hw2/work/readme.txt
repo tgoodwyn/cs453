@@ -1,15 +1,25 @@
 
 command line copy pasta:
-cd server
+
+RUNNING SERVER
+cd /work
+java -cp . server.Publisher
+
+RUNNING CLIENT
+cd /work
+java -cp . client.Client
+
+RELOADING SERVER CODE
+cd /work/server
 javac ./*.java ./model/*.java
 
-cd ..
+REGENERATING CLIENT CODE
+cd /work
 java -cp . server.Publisher
 wsimport -keep http://localhost:8080/hello?wsdl -p client
+cd /work/client
+javac *.
 
-cd client
-javac *.java
-cd ..
-java -cp . client.Client
+
 
 

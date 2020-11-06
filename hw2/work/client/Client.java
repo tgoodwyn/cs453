@@ -4,27 +4,30 @@ public class Client {
 
   public static void main(String[] args) {
     ServerService myHelloWorld = new ServerService();
-
     ServerAPI myinterface = myHelloWorld.getServerPort();
 
     String response = "";
-
-    switch (args[0]) {
-      case 2:
-        response =
-          myinterface.studentEnter()
-          );
-        break;
-      case 4:
-        System.out.println("4");
-        break;
+    while (true) {
+        System.out.println("Enter server request> ");
+        Scanner input = new Scanner(System.in);
+        int request = input.nextInt();
+        if (request == 0) {
+            break;
+        }
+        switch (request) {
+            case 1:
+                response = studentEnter(0, 1, false, false);
+                break;
+            case 2:
+                System.out.println("4");
+                break;
+            case 8:
+                response = studentEnter(0, 8, false, false);
+                break;
+            case 9:
+                response = studentEnter(0, 9, false, false);
+                break;                              
+        }
+        System.out.println(response);
     }
-    response =
-      myinterface.studentEnter(
-        Integer.parseInt(args[0]),
-        Boolean.parseBoolean(args[1])
-      );
-
-    System.out.println(response);
-  }
 }

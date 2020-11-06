@@ -76,7 +76,7 @@ public class Server implements ServerAPI{
 
         int count = rooms.get(classId).rectangles[rectId];
         if (rectId == 0 || count == 0) {
-            response += "There is no student in rectangle"+rectId+" to exit.\n";
+            response += "There is no student in rectangle "+rectId+" to exit.\n";
             return response;
         }
 

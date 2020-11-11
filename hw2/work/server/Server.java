@@ -33,7 +33,7 @@ public class Server implements ServerAPI{
         }
 
         // Generating string for the student entry into chosen rectangle
-        String rectName = (rectId == 5) ? "for questions" : Integer.toString(rectId);
+        String rectName = (rectId == 6) ? "for questions" : Integer.toString(rectId);
         response += "Student enters rectangle " + rectName + "\n";
         int count = ++rooms.get(classId).rectangles[rectId];
 

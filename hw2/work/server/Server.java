@@ -101,7 +101,7 @@ public class Server implements ServerAPI{
         }
 
         // Generate new count of students in the rectangle and generate string
-        String rectName = (rectId == 5) ? "for questions" : Integer.toString(rectId);
+        String rectName = (rectId == 6) ? "for questions" : Integer.toString(rectId);
         response += "Student exits rectangle " + rectName + "\n";
         count = --rooms.get(classId).rectangles[rectId];
         response += "Now there are " + count + " occupants\n";

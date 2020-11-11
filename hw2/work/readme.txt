@@ -12,6 +12,13 @@ RUNNING CLIENT
 cd /work
 java -cp . client.Client
 
+--------------------------client examples-------------------
+student:enter classroom:1 rectangle:q
+instructor:enter classroom:1 rectangle:q
+student:enter classroom:1 rectangle:q wipes mask
+student:exit classroom:1 rectangle:q
+instructor:exit classroom:1 rectangle:q
+student:exit classroom:1 rectangle:q wipes sanitize
 
 ---------------------ONLY REQUIRED IF SERVER CODE IS CHANGED---------------------
 RELOADING SERVER CODE

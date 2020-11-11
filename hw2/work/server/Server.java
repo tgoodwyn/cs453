@@ -28,7 +28,8 @@ public class Server implements ServerAPI{
         // Case to handle student entering instructors space
         if (rectId == 0) {
             response += "Student mistakenly enters  instructor's rectangle and immediately leaves\n";
-            return response;
+            System.out.println(response);
+        return response;
         }
 
         // Generating string for the student entry into chosen rectangle
@@ -46,6 +47,7 @@ public class Server implements ServerAPI{
         if (!mask) {
             response += "ALERT: Failure to wear a mask\n";
         }
+        System.out.println(response);
         return response;
 
     }
@@ -59,13 +61,15 @@ public class Server implements ServerAPI{
         // Case to handle the instructor not going to only his space
         if (rectId != 0) {
             response += "Instructor mistakenly enters a student rectangle and immediately leaves\n";
-            return response;
+            System.out.println(response);
+        return response;
         }
 
         // Case for trying to pass in more than one instructor
         if (rooms.get(classId).instructorHasEntered) {
             response += "Instructor has already entered the room\n";
-            return response;
+            System.out.println(response);
+        return response;
         }
 
         // Else send the entry comfirmation and check for the other failures that could not have been done
@@ -78,6 +82,7 @@ public class Server implements ServerAPI{
         if (!mask) {
             response += "ALERT: Failure to wear a mask\n";
         }
+        System.out.println(response);
         return response;
     }
 
@@ -91,7 +96,8 @@ public class Server implements ServerAPI{
         int count = rooms.get(classId).rectangles[rectId];
         if (rectId == 0 || count == 0) {
             response += "There is no student in rectangle "+rectId+" to exit.\n";
-            return response;
+            System.out.println(response);
+        return response;
         }
 
         // Generate new count of students in the rectangle and generate string
@@ -107,6 +113,7 @@ public class Server implements ServerAPI{
         if (!sanitizes) {
             response += "ALERT: Failure to sanitize\n";
         }
+        System.out.println(response);
         return response;
     }
 
@@ -119,7 +126,8 @@ public class Server implements ServerAPI{
         // Check to see if the instructor is present to be able to leave
         if (!rooms.get(classId).instructorHasEntered) {
             response += "Instructor not yet in the room\n";
-            return response;
+            System.out.println(response);
+        return response;
         }
 
         // Generate the string to return and check to see if instructor performed exiting requirements
@@ -131,6 +139,7 @@ public class Server implements ServerAPI{
         if (!sanitizes) {
             response += "ALERT: Failure to sanitize\n";
         }
+        System.out.println(response);
         return response;
 
     }
